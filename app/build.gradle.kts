@@ -49,4 +49,13 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    //GSON Conversion
+    implementation(libs.convetor.gson)
+    //API Interceptor
+    implementation(libs.retrofit)
+    implementation(libs.logging.interceptor)
+    implementation(libs.convertgsonkotlin)
+
+    //Glide
+    implementation (libs.glide)
 }
