@@ -1,17 +1,19 @@
-package com.themoviedbdemo.service
+package com.themoviedbdemo.network.pagingsource
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.themoviedbdemo.models.responcemodel.Person
 import com.themoviedbdemo.network.ApiInterface
 
-class PersonPagingSource(
+class SearchPersonPagingSource(
+    private val query: String,
     private val api: ApiInterface
 ) : PagingSource<Int, Person>() {
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Person> {
         return try {
             val currentPage = params.key ?: 1
-            val response = api.getPopularPersons(
+            val response = api.searchPersons(
+                query = query,
                 language = "en-US",
                 page = currentPage
             )
@@ -32,6 +34,9 @@ class PersonPagingSource(
     }
 
     override fun getRefreshKey(state: PagingState<Int, Person>): Int? {
-        return state.anchorPosition?.let { state.closestPageToPosition(it)?.prevKey?.plus(1) }
+        return state.anchorPosition?.let { anchorPosition ->
+            state.closestPageToPosition(anchorPosition)?.prevKey?.plus(1)
+                ?: state.closestPageToPosition(anchorPosition)?.nextKey?.minus(1)
+        }
     }
 }

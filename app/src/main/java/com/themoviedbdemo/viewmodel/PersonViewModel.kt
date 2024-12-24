@@ -1,24 +1,28 @@
 package com.themoviedbdemo.viewmodel
 
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.themoviedbdemo.models.responcemodel.Person
 import com.themoviedbdemo.network.ApiInterface
-import com.themoviedbdemo.service.PersonPagingSource
+import com.themoviedbdemo.network.pagingsource.PersonPagingSource
 import kotlinx.coroutines.flow.Flow
 
 class PersonViewModel(private val api: ApiInterface) : ViewModel() {
 
-    fun getPopularPersons(): Flow<PagingData<Person>> {
+    fun getPopularPersons(query: String): Flow<PagingData<Person>> {
         return Pager(
             config = PagingConfig(
-                pageSize = 20,
-                enablePlaceholders = false
+                pageSize = PAGE_SIZE,
+                enablePlaceholders = false,
+                prefetchDistance = PAGE_SIZE / 4
             ),
-            pagingSourceFactory = { PersonPagingSource(api) }
+            pagingSourceFactory = { PersonPagingSource(query,api) }
         ).flow
+    }
+
+    companion object {
+        const val PAGE_SIZE = 20
     }
 }

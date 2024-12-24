@@ -1,4 +1,4 @@
-package com.themoviedbdemo.repository
+package com.themoviedbdemo.network.repository
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
