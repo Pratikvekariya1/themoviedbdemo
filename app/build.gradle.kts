@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    alias(libs.plugins.serialize)
+    id("kotlin-parcelize")
 }
 
 android {
@@ -15,6 +17,8 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField("String", "Token", "\"eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyNmQ0N2U4ZjAyMTU4ZmYyYTMwMzM2OWYyYWNhMGRhNyIsIm5iZiI6MTczNDk0NDg4MC4yNzUsInN1YiI6IjY3NjkyODcwNDZhNWE0Mzg3OTBiMGExYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.B56yXCqBwMvEQR6lshY0hcvGG2-TuNkrU5B7tXhVnVY\"")
+
     }
 
     buildTypes {
@@ -55,7 +59,8 @@ dependencies {
     implementation(libs.retrofit)
     implementation(libs.logging.interceptor)
     implementation(libs.convertgsonkotlin)
-
     //Glide
     implementation (libs.glide)
+    //Pagination
+    implementation (libs.paging)
 }

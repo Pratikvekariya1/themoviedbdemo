@@ -14,6 +14,7 @@ convetergson="2.9.0"
 logginginterceptor="4.10.0"
 convertgsonkotlin="1.5.1"
 glide="4.16.0"
+pagging="3.3.2"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -29,8 +30,10 @@ convetor-gson = { group = "com.squareup.retrofit2", name = "converter-gson", ver
 logging-interceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "logginginterceptor" }
 convertgsonkotlin = {group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "convertgsonkotlin"}
 glide = {group = "com.github.bumptech.glide", name = "glide", version.ref = "glide"}
+paging = {group = "androidx.paging", name = "paging-runtime-ktx", version.ref = "pagging"}
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+serialize = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 

@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">The Movie DB Demo</string>
     <string name="logo_image">Logo Image</string>
+    <string name="person_image">person image</string>
+    <string name="image_of_know_for">Image of Know for</string>
+    <string name="image_of_person">image of person</string>
+    <string name="retry">Retry</string>
+    <string name="search">Search</string>
+    <string name="person_demo">Person Demo</string>
 </resources>
